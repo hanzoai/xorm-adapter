@@ -34,8 +34,8 @@ func (the *CasbinRule) TableName() string {
 	return the.tableName
 }
 
-// CasbinRule  .
 type CasbinRule struct {
+	Id    int64  `xorm:"pk autoincr"`
 	Ptype string `xorm:"varchar(100) index not null default ''"`
 	V0    string `xorm:"varchar(100) index not null default ''"`
 	V1    string `xorm:"varchar(100) index not null default ''"`
