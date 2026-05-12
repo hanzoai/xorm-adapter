@@ -19,8 +19,8 @@ import (
 	"strings"
 	"testing"
 
-	"github.com/casbin/casbin/v2"
-	"github.com/casbin/casbin/v2/util"
+	"github.com/hanzoai/authz"
+	"github.com/hanzoai/authz/util"
 	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
 )
