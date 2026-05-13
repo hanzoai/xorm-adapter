@@ -1,4 +1,4 @@
-module github.com/casdoor/xorm-adapter/v3
+module github.com/hanzoai/xorm-adapter/v3
 
 go 1.12
 
