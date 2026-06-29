@@ -1,3 +1,5 @@
+<p align="center"><img src=".github/hero.svg" alt="xorm-adapter" width="880"></p>
+
 Xorm Adapter
 [![Go](https://github.com/casbin/xorm-adapter/actions/workflows/ci.yml/badge.svg)](https://github.com/casbin/xorm-adapter/actions/workflows/ci.yml)
 [![Coverage Status](https://coveralls.io/repos/github/casbin/xorm-adapter/badge.svg?branch=master)](https://coveralls.io/github/casbin/xorm-adapter?branch=master)
