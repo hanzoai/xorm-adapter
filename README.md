@@ -9,7 +9,6 @@ Xorm Adapter
 
 Xorm Adapter is the [Xorm](https://gitea.com/xorm/xorm) adapter for [Casbin](https://github.com/casbin/casbin). With this library, Casbin can load policy from Xorm supported database or save policy to it.
 
-Based on [Xorm Drivers Support](https://gitea.com/xorm/xorm#drivers-support), The current supported databases are:
 
 - Mysql: [github.com/go-sql-driver/mysql](https://github.com/go-sql-driver/mysql)
 - MyMysql: [github.com/ziutek/mymysql/godrv](https://github.com/ziutek/mymysql/godrv)
