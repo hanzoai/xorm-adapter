@@ -22,8 +22,8 @@ import (
 
 	"github.com/hanzoai/authz/model"
 	"github.com/hanzoai/authz/persist"
-	"github.com/lib/pq"
 	"github.com/hanzoai/xorm"
+	"github.com/lib/pq"
 )
 
 // TableName  if tableName=="" , adapter will use default tablename "casbin_rule".
@@ -356,7 +356,7 @@ func (a *Adapter) AddPolicy(sec string, ptype string, rule []string) error {
 
 // AddPolicies adds multiple policy rule to the storage.
 func (a *Adapter) AddPolicies(sec string, ptype string, rules [][]string) error {
-	_, err := a.engine.Transaction(func(tx *xorm.Session) (interface{}, error) {
+	_, err := a.engine.Transaction(func(tx *xorm.Session) (any, error) {
 		for _, rule := range rules {
 			line := a.genPolicyLine(ptype, rule)
 			_, err := tx.InsertOne(line)
@@ -378,7 +378,7 @@ func (a *Adapter) RemovePolicy(sec string, ptype string, rule []string) error {
 
 // RemovePolicies removes multiple policy rule from the storage.
 func (a *Adapter) RemovePolicies(sec string, ptype string, rules [][]string) error {
-	_, err := a.engine.Transaction(func(tx *xorm.Session) (interface{}, error) {
+	_, err := a.engine.Transaction(func(tx *xorm.Session) (any, error) {
 		for _, rule := range rules {
 			line := a.genPolicyLine(ptype, rule)
 			_, err := tx.Delete(line)
@@ -420,7 +420,7 @@ func (a *Adapter) RemoveFilteredPolicy(sec string, ptype string, fieldIndex int,
 }
 
 // LoadFilteredPolicy loads only policy rules that match the filter.
-func (a *Adapter) LoadFilteredPolicy(model model.Model, filter interface{}) error {
+func (a *Adapter) LoadFilteredPolicy(model model.Model, filter any) error {
 	filterValue, ok := filter.(Filter)
 	if !ok {
 		return errors.New("invalid filter type")
@@ -581,8 +581,8 @@ func (c *CasbinRule) toStringPolicy() []string {
 	return policy
 }
 
-func (c *CasbinRule) queryString() (interface{}, []interface{}) {
-	queryArgs := []interface{}{c.Ptype}
+func (c *CasbinRule) queryString() (any, []any) {
+	queryArgs := []any{c.Ptype}
 
 	queryStr := "ptype = ?"
 	if c.V0 != "" {

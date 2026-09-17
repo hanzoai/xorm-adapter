@@ -19,9 +19,9 @@ import (
 	"strings"
 	"testing"
 
+	_ "github.com/go-sql-driver/mysql"
 	"github.com/hanzoai/authz"
 	"github.com/hanzoai/authz/util"
-	_ "github.com/go-sql-driver/mysql"
 	_ "github.com/lib/pq"
 )
 
@@ -329,13 +329,13 @@ func arrayEqualsWithoutOrder(a [][]string, b [][]string) bool {
 	order := make(map[int]struct{})
 	l := len(a)
 
-	for i := 0; i < l; i++ {
+	for i := range l {
 		mapA[i] = util.ArrayToString(a[i])
 		mapB[i] = util.ArrayToString(b[i])
 	}
 
-	for i := 0; i < l; i++ {
-		for j := 0; j < l; j++ {
+	for i := range l {
+		for j := range l {
 			if _, ok := order[j]; ok {
 				if j == l-1 {
 					return false
